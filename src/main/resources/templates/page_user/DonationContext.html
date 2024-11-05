@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"/>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet"/>
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.min.css" rel="stylesheet"/>
+    <!-- Intro settings -->
+    <style>
+        /* Default height for small devices */
+        #intro-example {
+            height: 400px;
+        }
+
+        /* Height for devices larger than 992px */
+        @media (min-width: 992px) {
+            #intro-example {
+                height: 800px;
+            }
+        }
+        /* Điều chỉnh kích thước chữ và cho phép xuống dòng */
+        .badge {
+            font-size: 1.0rem; /* Tăng kích thước chữ */
+            white-space: normal; /* Cho phép xuống dòng */
+            word-wrap: break-word; /* Tự động xuống dòng nếu từ quá dài */
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000; /* Đảm bảo menu luôn nằm trên các thành phần khác */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #ffefdb !important;
+       }
+       .nav-item.dropdown:hover .dropdown-menu {
+            display: block;
+            margin-top: 0; /* Đảm bảo không có khoảng cách giữa menu và dropdown */
+       }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary"
+     style="box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); padding: 10px;">
+    <!-- Container wrapper -->
+    <div class="container-fluid">
+        <!-- Toggle button -->
+        <button data-mdb-collapse-init class="navbar-toggler" type="button"
+                data-mdb-target="#navbarCenteredExample" aria-controls="navbarCenteredExample"
+                aria-expanded="false" aria-label="Toggle navigation"
+                style="border: none; outline: none; font-size: 24px;">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse justify-content-center" id="navbarCenteredExample"
+             style="transition: opacity 0.5s ease, visibility 0.5s; opacity: 1;">
+            <!-- Left links -->
+            <ul class="navbar-nav mb-2 mb-lg-0" style="align-items: center;">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="trang-chu"
+                       style="padding: 10px 15px; color: #000; font-weight: 500;
+                              border-radius: 5px; transition: background-color 0.3s, color 0.3s;">
+                        Trang chủ
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="gioi-thieu"
+                       style="padding: 10px 15px; color: #000; font-weight: 500;
+                              border-radius: 5px; transition: background-color 0.3s, color 0.3s;">
+                        Giới thiệu
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="chuong-trinh"
+                       style="padding: 10px 15px; color: #000; font-weight: 500;
+                              border-radius: 5px; transition: background-color 0.3s, color 0.3s;">
+                        Hoàn cảnh quyên góp
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown"
+                    style="position: relative;">
+                    <a class="nav-link active dropdown-toggle" href="chien-dich-gay-quy"
+                       id="navbarDropdown_2" role="button" aria-expanded="false"
+                       style="padding: 10px 15px; color: #000; font-weight: 500;
+                              border-radius: 5px; transition: background-color 0.3s, color 0.3s;">
+                        Chiến dịch gây quỹ
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                        style="position: absolute; top: 100%; left: 0; display: none;
+                               background-color: #f1f1f1; border-radius: 5px; min-width: 200px;
+                               transition: opacity 0.3s;">
+                        <li><a class="dropdown-item" href="#"
+                               style="padding: 10px 15px; color: #000;">Bệnh hiểm nghèo</a></li>
+                        <li><a class="dropdown-item" href="#"
+                               style="padding: 10px 15px; color: #000;">Chấp cánh sinh viên đến trường</a></li>
+                        <li><a class="dropdown-item" href="#"
+                               style="padding: 10px 15px; color: #000;">Bữa ăn sinh viên</a></li>
+                        <li><a class="dropdown-item" href="#"
+                               style="padding: 10px 15px; color: #000;">Sinh viên giỏi có hoàn cảnh</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown"
+                    style="position: relative;">
+                    <a class="nav-link active dropdown-toggle" href="huong-dan-dong-gop" id="navbarDropdown_3"
+                       role="button" aria-expanded="false"
+                       style="padding: 10px 15px; color: #000; font-weight: 500;
+                              border-radius: 5px; transition: background-color 0.3s, color 0.3s;">
+                        Đóng góp
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown"
+                        style="position: absolute; top: 100%; left: 0; display: none;
+                               background-color: #f1f1f1; border-radius: 5px; min-width: 200px;
+                               transition: opacity 0.3s;">
+                        <li><a class="dropdown-item" href="cap-nhat-dong-gop"
+                               style="padding: 10px 15px; color: #000;">Cập nhật đóng góp</a></li>
+                        <li><a class="dropdown-item" href="huong-dan-dong-gop"
+                               style="padding: 10px 15px; color: #000;">Hướng dẫn đóng góp</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="tin-tuc-cong-dong"
+                       style="padding: 10px 15px; color: #000; font-weight: 500;
+                              border-radius: 5px; transition: background-color 0.3s, color 0.3s;">
+                        Tin tức cộng đồng
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<--- Content --->
+<section style="background-color: #eee;">
+    <div class="container py-5" style="margin-top: 100px">
+        <h4 class="text-center mb-5" style="color: #8b2323"><strong>Tất cả các dự án</strong></h4>
+        <div class="row">
+            <div class="col-lg-4 col-md-12 mb-4" th:each="charitycontent : ${charitycontent}">
+                <div class="card shadow" style="flex: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div style="height: 200px; overflow: hidden;">
+                        <img th:src="${charitycontent.img}"
+                             src=""
+                             alt="Hình ảnh dự án"
+                             style="width: 100%; height: 100%; object-fit: cover;">
+                    </div>
+                    <div class="card-body" style="display: flex; flex-direction: column; flex: 1;">
+                        <h5 class="card-title text-center" th:text="${charitycontent.title}"></h5>
+                        <!--                        <p class="card-text" style="flex-grow: 1;">-->
+                        <!--                            CHƯƠNG TRÌNH GIAO LƯU NGHỆ THUẬT GIỮA TRƯỜNG ĐẠI HỌC SÀI GÒN VÀ HỌC VIỆN ÂM NHẠC FOUNTAIN VALLEY (MỸ) Chiều ngày 12/07/2024 [...]-->
+                        <!--                        </p>-->
+                        <a th:href="@{'/chuong-trinh/' + ${charitycontent.id}}"
+                           class="btn btn-primary"
+                           style="margin-top: auto;">Xem thêm</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--<section style="background-color: #eee;">-->
+<!--    <div class="container py-5" style="margin-top: 100px">-->
+<!--        <h4 class="text-center mb-5" style="color: #8b2323"><strong>Tất cả các dự án</strong></h4>-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-4 col-md-12 mb-4" th:each="charitycontent : ${charitycontent}">-->
+<!--                <div class="bg-image hover-zoom ripple shadow-1-strong rounded" >-->
+<!--                    <img class="w-100" th:src="${charitycontent.img}" src=""/>-->
+<!--                    <a th:href="@{'/chuong-trinh/' + ${charitycontent.id}}">-->
+<!--                        <div class="mask" style="background-color: rgba(0, 0, 0, 0.3);">-->
+<!--                            <div class="d-flex justify-content-start align-items-start h-100">-->
+<!--                                <span class="badge bg-body-tertiary pt-2 ms-3 mt-3 text-dark" th:text="${charitycontent.title}"></span>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="hover-overlay">-->
+<!--                            <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-body-tertiary text-muted" style="margin-top:100px">
+    <!-- Section: Social media -->
+    <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+        <!-- Left -->
+        <div class="me-5 d-none d-lg-block">
+            <span>Get connected with us on social networks:</span>
+        </div>
+        <!-- Left -->
+
+        <!-- Right -->
+        <div>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-google"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+        <!-- Right -->
+    </section>
+    <!-- Section: Social media -->
+
+    <!-- Section: Links  -->
+    <section class="">
+        <div class="container text-center text-md-start mt-5">
+            <!-- Grid row -->
+            <div class="row mt-3">
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    <!-- Content -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        <i class="fas fa-gem me-3"></i>Company name</h6>
+                    <p>
+                        Here you can use rows and columns to organize your footer content. Lorem ipsum
+                        dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Products
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset">Angular</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">React</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Vue</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Laravel</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">
+                        Useful links
+                    </h6>
+                    <p>
+                        <a href="#!" class="text-reset">Pricing</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Settings</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Orders</a>
+                    </p>
+                    <p>
+                        <a href="#!" class="text-reset">Help</a>
+                    </p>
+                </div>
+                <!-- Grid column -->
+
+                <!-- Grid column -->
+                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    <!-- Links -->
+                    <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                    <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                    <p>
+                        <i class="fas fa-envelope me-3"></i>
+                        info@example.com
+                    </p>
+                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
+                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+                </div>
+                <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+        </div>
+    </section>
+    <!-- Section: Links  -->
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2021 Copyright:
+        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+</body>
+<!-- MDB -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.3.2/mdb.umd.min.js"></script>
+<script>
+    // Hiệu ứng mở menu thả xuống khi hover
+    document.querySelectorAll('.nav-item.dropdown').forEach(function (dropdown) {
+        dropdown.addEventListener('mouseenter', function () {
+            const menu = this.querySelector('.dropdown-menu');
+            menu.style.display = 'block';
+            menu.style.opacity = '1';
+        });
+
+        dropdown.addEventListener('mouseleave', function () {
+            const menu = this.querySelector('.dropdown-menu');
+            menu.style.opacity = '0';
+            setTimeout(() => (menu.style.display = 'none'), 300);
+        });
+    });
+
+    // Thêm hiệu ứng hover cho các liên kết
+    document.querySelectorAll('.nav-link').forEach(function (link) {
+        link.addEventListener('mouseenter', function () {
+            this.style.backgroundColor = '#007bff'; // Màu nền hover
+            this.style.color = '#fff'; // Màu chữ khi hover
+        });
+        link.addEventListener('mouseleave', function () {
+            this.style.backgroundColor = ''; // Xóa màu nền hover
+            this.style.color = '#000'; // Màu chữ ban đầu
+        });
+    });
+</script>
+</html>
